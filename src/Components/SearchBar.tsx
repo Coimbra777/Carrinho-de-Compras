@@ -30,6 +30,7 @@ const StyledSearchBar = styled.form`
 
 const SearchBar: React.FC = () => {
   const [value, setValue] = useState("");
+
   return (
     <StyledSearchBar>
       <div className="search-bar">
@@ -41,6 +42,7 @@ const SearchBar: React.FC = () => {
           onChange={({ target }) => setValue(target.value)}
           required
         />
+
         <button type="submit" className="search-button">
           <BsSearch />
         </button>

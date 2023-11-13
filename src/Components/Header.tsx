@@ -3,6 +3,7 @@ import React from "react";
 import styled from "styled-components";
 import "../App.css";
 import SearchBar from "./SearchBar";
+import CarButton from "./CarButton";
 
 const StyledHeader = styled.header`
   .header {
@@ -23,7 +24,7 @@ const Header: React.FC = () => {
       <header className="header">
         <div className="container">
           <SearchBar />
-          <button>carr</button>
+          <CarButton />
         </div>
       </header>
     </StyledHeader>
