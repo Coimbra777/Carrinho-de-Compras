@@ -53,18 +53,32 @@ const StyledCard = styled.section`
   }
 `;
 
-const ProductCard: React.FC = () => {
+interface ProductCardProps {
+  data: {
+    title: string;
+    price: number;
+    thumbnail?: string;
+  };
+}
+
+const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
+  const { title, price, thumbnail } = data;
   return (
     <StyledCard>
       <section className="product-card">
-        <img
-          src="https://http2.mlstatic.com/D_790522-MLA47782243619_102021-W.jpg"
-          alt="product"
-          className="product-image"
-        />
+        {thumbnail && (
+          <img
+            src={thumbnail.replace(/\w\.jpg/gi, "w.jpg")}
+            alt="product"
+            className="product-image"
+          />
+        )}
+
         <div className="card-info">
-          <h2 className="card-title">Titulo</h2>
-          <h2 className="card-price">Preço</h2>
+          <h2 className="card-title">{title}</h2>
+          <h2 className="card-price">
+            R$ {price.toFixed(2).replace(".", ",")}
+          </h2>
         </div>
         <button type="submit" className="card-btn-add">
           Comprar
