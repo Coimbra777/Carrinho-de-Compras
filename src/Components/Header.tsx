@@ -1,9 +1,9 @@
 // Header.tsx
 import React from "react";
-import styled from "styled-components";
 import "../App.css";
 import SearchBar from "./SearchBar";
 import CarButton from "./CarButton";
+import styled from "styled-components";
 
 const StyledHeader = styled.header`
   .header {
@@ -14,7 +14,7 @@ const StyledHeader = styled.header`
   .header > div {
     display: flex;
     justify-content: space-between;
-    padding: 3rem 4rem;
+    padding: 2rem 4rem;
   }
 `;
 

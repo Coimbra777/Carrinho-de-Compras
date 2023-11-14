@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import styled from "styled-components";
 
-const StyledCarButton = styled.button`
+const StyledCarButton = styled.div`
   .car-button {
     font-size: 1.5rem;
     display: flex;
@@ -11,7 +11,6 @@ const StyledCarButton = styled.button`
     padding: 5px;
     cursor: pointer;
     border: none;
-    position: relative;
   }
 `;
 
@@ -21,6 +20,9 @@ const CarButton: React.FC = () => {
   const adicionarItem = () => {
     setItensCar(itensCar + 1);
   };
+  // const removerItem = () => {
+  //   setItensCar(itensCar - 1);
+  // };
   return (
     <StyledCarButton>
       <button type="button" className="car-button" onClick={adicionarItem}>
