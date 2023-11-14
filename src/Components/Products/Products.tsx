@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import fetchProducts from "../../api/fetchProducts.js";
+import ProductCard from "../ProductCard/ProductCard.js";
 
+// tipagem de dados
 interface Product {
   title: string;
 }
@@ -21,13 +23,17 @@ const Products: React.FC = () => {
     });
   }, []);
 
-  const renderProducts = products.map((product) => (
-    <h1 key={product.title}>{product.title}</h1>
-  ));
+  console.log(products);
+
+  // const renderProducts = products.map((product) => (
+  //   <h1 key={product.title}>{product.title}</h1>
+  // ));
 
   return (
     <StyledProducts>
-      <section className="container products">{renderProducts}</section>
+      <section className="container products">
+        <ProductCard />
+      </section>
     </StyledProducts>
   );
 };
