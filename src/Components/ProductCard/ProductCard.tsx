@@ -68,7 +68,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
       <section className="product-card">
         {thumbnail && (
           <img
-            src={thumbnail.replace(/\w\.jpg/gi, "w.jpg")}
+            src={thumbnail.replace(/\w\.jpg/gi, "W.jpg")}
             alt="product"
             className="product-image"
           />
