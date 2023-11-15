@@ -12,7 +12,9 @@ interface Product {
 
 const StyledProducts = styled.section`
   .products {
-    padding: 150px 20px 50px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 30px;
   }
 `;
 

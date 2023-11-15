@@ -4,11 +4,12 @@ import FormatCurrency from "../../utils/FormatCurrency";
 
 const StyledCard = styled.section`
   .product-card {
-    width: 100%;
-    max-width: 300px;
+    max-width: 100%;
+    height: 100%;
     background-color: white;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     cursor: pointer;
     margin: 0 auto;
     padding: 20px;
