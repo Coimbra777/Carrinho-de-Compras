@@ -10,6 +10,7 @@ const StyledHeader = styled.header`
     background-color: #0f52ba;
     position: fixed;
     width: 100%;
+    z-index: 100;
   }
   .header > div {
     display: flex;
