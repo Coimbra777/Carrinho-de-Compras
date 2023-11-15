@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import FormatCurrency from "../../utils/FormatCurrency";
 
 const StyledCard = styled.section`
   .product-card {
@@ -77,10 +78,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
         <div className="card-info">
           <h2 className="card-title">{title}</h2>
           <h2 className="card-price">
-            {price.toLocaleString("pt-br", {
-              style: "currency",
-              currency: "BRL",
-            })}
+            {FormatCurrency({ value: price, currency: "BRL" })}
           </h2>
         </div>
         <button type="submit" className="card-btn-add">
