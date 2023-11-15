@@ -77,11 +77,14 @@ const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
         <div className="card-info">
           <h2 className="card-title">{title}</h2>
           <h2 className="card-price">
-            R$ {price.toFixed(2).replace(".", ",")}
+            {price.toLocaleString("pt-br", {
+              style: "currency",
+              currency: "BRL",
+            })}
           </h2>
         </div>
         <button type="submit" className="card-btn-add">
-          Comprar
+          Adicionar
         </button>
       </section>
     </StyledCard>
