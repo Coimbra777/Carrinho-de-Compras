@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, FormEvent, useContext } from "react";
 import { BsSearch } from "react-icons/bs";
 import styled from "styled-components";
+import fetchProducts from "../api/fetchProducts";
+import AppContext from "../Context/AppContext";
 
-const StyledSearchBar = styled.form`
+const StyledSearchBar = styled.div`
   .search-bar {
     display: flex;
     width: 25rem;
@@ -12,28 +14,37 @@ const StyledSearchBar = styled.form`
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
   }
 
-    .search-input {
-      outline:none
-      border: none;
-      padding: 10px;
-      flex: 1;
-    }
+  .search-input {
+    outline: none;
+    border: none;
+    padding: 10px;
+    flex: 1;
+  }
 
-    .search-button {
-      border: none;
-      background-color: #3498db;
-      color: #fff;
-      padding: 10px;
-      cursor: pointer;
-    }
+  .search-button {
+    border: none;
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px;
+    cursor: pointer;
+  }
 `;
 
 const SearchBar: React.FC = () => {
   const [value, setValue] = useState("");
+  const handleSearch = async (event: FormEvent) => {
+    event.preventDefault();
+    const products = await fetchProducts(value);
+    setValue("");
+    console.log(products);
+  };
+
+  const { name } = useContext(AppContext) || { name: "" };
 
   return (
     <StyledSearchBar>
-      <div className="search-bar">
+      <form className="search-bar" onSubmit={handleSearch}>
+        {name && name}
         <input
           type="search"
           value={value}
@@ -46,7 +57,7 @@ const SearchBar: React.FC = () => {
         <button type="submit" className="search-button">
           <BsSearch />
         </button>
-      </div>
+      </form>
     </StyledSearchBar>
   );
 };

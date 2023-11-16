@@ -1,14 +1,15 @@
 import "./App.css";
 import Header from "./Components/Header";
 import Products from "./Components/Products/Products";
+import AppProvider from "./Context/AppProvider";
 
-function App() {
+const App: React.FC = () => {
   return (
-    <div>
+    <AppProvider name="name">
       <Header />
       <Products />
-    </div>
+    </AppProvider>
   );
-}
+};
 
 export default App;
