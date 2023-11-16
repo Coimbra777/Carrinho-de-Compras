@@ -4,6 +4,7 @@ import React from "react";
 import AppProvider from "./Context/AppProvider";
 import Products from "./Components/Products/Products";
 import Header from "./Components/Header";
+import Carr from "./Components/Carr/Carr";
 
 const App: React.FC = () => {
   const providerProps = {
@@ -17,6 +18,7 @@ const App: React.FC = () => {
     <AppProvider {...providerProps}>
       <Header />
       <Products />
+      <Carr />
     </AppProvider>
   );
 };
