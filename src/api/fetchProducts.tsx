@@ -2,7 +2,6 @@ interface Product {
   id: number;
   title: string;
   price: number;
-  currency_id: string;
   thumbnail: string;
 }
 

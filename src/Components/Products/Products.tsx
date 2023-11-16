@@ -1,6 +1,6 @@
-import React, { useState, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import styled from "styled-components";
-
+import fetchProducts from "../../api/fetchProducts.js";
 import ProductCard from "../ProductCard/ProductCard";
 import Loading from "../Loading/Loading";
 import AppContext from "../../Context/AppContext";
@@ -17,8 +17,19 @@ const StyledProducts = styled.section`
 const Products: React.FC = () => {
   const context = useContext(AppContext);
 
-  const { products = [] } = context || {};
-  const [loading] = useState(false);
+  if (!context) {
+    throw new Error("Context not found");
+  }
+
+  const { products, setProducts } = context;
+  const [loading, setLoading] = React.useState(true);
+
+  useEffect(() => {
+    fetchProducts("iphone").then((response) => {
+      setProducts(() => response);
+      setLoading(false);
+    });
+  }, [setProducts]);
 
   return (
     (loading && <Loading />) || (
