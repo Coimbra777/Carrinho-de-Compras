@@ -1,15 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
 import fetchProducts from "../../api/fetchProducts.js";
 import ProductCard from "../ProductCard/ProductCard";
 import Loading from "../Loading/Loading";
-
-// tipagem de dados
-interface Product {
-  id: number;
-  title: string;
-  price: number;
-}
+import AppContext from "../../Context/AppContext";
 
 const StyledProducts = styled.section`
   .products {
@@ -21,15 +15,19 @@ const StyledProducts = styled.section`
 `;
 
 const Products: React.FC = () => {
-  const [products, setProducts] = useState<Product[]>([]);
+  const context = useContext(AppContext);
+  const { products = [] } = context || {};
+
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchProducts("iphone").then((response) => {
-      setProducts(response);
-      setLoading(false);
+      if (context && context.setProducts) {
+        context.setProducts(response);
+        setLoading(false);
+      }
     });
-  }, []);
+  }, [context]);
 
   return (
     (loading && <Loading />) || (

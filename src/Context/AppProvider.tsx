@@ -1,19 +1,18 @@
+// AppProvider.tsx
+
 import React, { useState, ReactNode } from "react";
-import AppContext from "./AppContext";
+import AppContext, { AppContextProps, Product } from "./AppContext";
 
 interface ProviderProps {
   children: ReactNode;
-  name: string;
 }
 
-const Provider: React.FC<ProviderProps> = ({ children }) => {
-  const [name, setName] = useState("acabjaka");
-  const value = {
-    name,
-    setName,
-  };
+const AppProvider: React.FC<ProviderProps> = ({ children }) => {
+  const [products, setProducts] = useState<Product[]>([]);
+
+  const value: AppContextProps = { products, setProducts };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };
 
-export default Provider;
+export default AppProvider;

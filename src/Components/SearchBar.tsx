@@ -1,8 +1,7 @@
-import React, { useState, FormEvent, useContext } from "react";
+import React, { useState, FormEvent } from "react";
 import { BsSearch } from "react-icons/bs";
 import styled from "styled-components";
 import fetchProducts from "../api/fetchProducts";
-import AppContext from "../Context/AppContext";
 
 const StyledSearchBar = styled.div`
   .search-bar {
@@ -39,12 +38,9 @@ const SearchBar: React.FC = () => {
     console.log(products);
   };
 
-  const { name } = useContext(AppContext) || { name: "" };
-
   return (
     <StyledSearchBar>
       <form className="search-bar" onSubmit={handleSearch}>
-        {name && name}
         <input
           type="search"
           value={value}
