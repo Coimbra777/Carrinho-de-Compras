@@ -32,13 +32,15 @@ const StyledSearchBar = styled.div`
 
 const SearchBar: React.FC = () => {
   const [value, setValue] = useState("");
-  const { setProducts } = useContext(AppContext);
+  const context = useContext(AppContext);
 
   const handleSearch = async (event: FormEvent) => {
     event.preventDefault();
-    const products = await fetchProducts(value);
-    setProducts(products);
-    setValue("");
+    if (context && context.setProducts) {
+      const products = await fetchProducts(value);
+      context.setProducts(products);
+      setValue("");
+    }
   };
 
   return (
