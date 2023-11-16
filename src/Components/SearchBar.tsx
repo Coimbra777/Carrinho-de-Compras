@@ -1,7 +1,8 @@
-import React, { useState, FormEvent } from "react";
+import React, { useState, FormEvent, useContext } from "react";
 import { BsSearch } from "react-icons/bs";
 import styled from "styled-components";
 import fetchProducts from "../api/fetchProducts";
+import AppContext from "../Context/AppContext";
 
 const StyledSearchBar = styled.div`
   .search-bar {
@@ -31,11 +32,20 @@ const StyledSearchBar = styled.div`
 
 const SearchBar: React.FC = () => {
   const [value, setValue] = useState("");
+  const context = useContext(AppContext);
+
   const handleSearch = async (event: FormEvent) => {
     event.preventDefault();
-    const products = await fetchProducts(value);
-    setValue("");
-    console.log(products);
+
+    if (context && context.setProducts) {
+      try {
+        const products = await fetchProducts(value);
+        context.setProducts(products);
+        setValue("");
+      } catch (error) {
+        console.error("Erro ao buscar produtos:", error);
+      }
+    }
   };
 
   return (
