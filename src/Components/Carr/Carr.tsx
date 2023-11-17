@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
+import AppContext from "../../Context/AppContext";
 import CarrItem from "./CarrItem";
 
 const StyledCarr = styled.section`
@@ -18,11 +19,19 @@ const StyledCarr = styled.section`
 `;
 
 const Carr: React.FC = () => {
+  const context = useContext(AppContext);
+  if (!context) {
+    throw new Error("Context not found");
+  }
+  const { carrItems } = context;
+
   return (
     <StyledCarr>
       <section className="carr">
         <div className="carr-itens">
-          <CarrItem />
+          {carrItems.map((carrItem) => (
+            <CarrItem key={carrItem.id} data={carrItem} />
+          ))}
         </div>
         <div className="carr-resume">Resumo do carrinho</div>
       </section>

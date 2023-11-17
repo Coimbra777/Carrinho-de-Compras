@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { MdRemoveShoppingCart } from "react-icons/md";
+import FormatCurrency from "../../Context/utils/FormatCurrency";
 
 const StyledCarrItem = styled.section`
   .carr-item-content {
@@ -43,14 +44,32 @@ const StyledCarrItem = styled.section`
   }
 `;
 
-const CarrItem: React.FC = () => {
+interface CarrProps {
+  data: {
+    id: number;
+    title: string;
+    price: number;
+    thumbnail?: string;
+  };
+}
+
+const CarrItem: React.FC<CarrProps> = ({ data }) => {
+  const { title, price, thumbnail } = data;
+
   return (
     <StyledCarrItem>
       <section className="carr-item">
-        <img src="" alt="imagem do produto" className="carr-item-image" />
+        <img
+          src={thumbnail}
+          alt="imagem do produto"
+          className="carr-item-image"
+        />
         <div className="carr-item-content">
-          <h3 className="carr-item-title">titulo do produto</h3>
-          <h3 className="carr-item-price">R$ 322, 00</h3>
+          <h3 className="carr-item-title">{title}</h3>
+          <h2 className="card-price">
+            {FormatCurrency({ value: price, currency: "BRL" })}
+          </h2>
+
           <button type="button" className="carr-button-remove">
             <MdRemoveShoppingCart />
           </button>

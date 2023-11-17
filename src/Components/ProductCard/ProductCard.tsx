@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
-import FormatCurrency from "../../utils/FormatCurrency";
+import AppContext, { Carr } from "../../Context/AppContext";
+import FormatCurrency from "../../Context/utils/FormatCurrency";
 
 const StyledCard = styled.section`
   .product-card {
@@ -57,6 +58,7 @@ const StyledCard = styled.section`
 
 interface ProductCardProps {
   data: {
+    id: number;
     title: string;
     price: number;
     thumbnail?: string;
@@ -65,6 +67,29 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
   const { title, price, thumbnail } = data;
+  const context = useContext(AppContext);
+  if (!context) {
+    throw new Error("No App Context");
+  }
+  const { carrItems, setCarrItems } = context;
+
+  const handleCarr = () => {
+    if (!carrItems) {
+      throw new Error("carrItem is undefined in the context");
+    }
+    const updatedCarr: Carr[] = [
+      ...carrItems,
+      {
+        id: data.id,
+        title: data.title,
+        price: data.price,
+        thumbnail: data.thumbnail,
+      },
+    ];
+
+    setCarrItems(updatedCarr);
+  };
+
   return (
     <StyledCard>
       <section className="product-card">
@@ -82,7 +107,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
             {FormatCurrency({ value: price, currency: "BRL" })}
           </h2>
         </div>
-        <button type="submit" className="card-btn-add">
+        <button onClick={handleCarr} type="submit" className="card-btn-add">
           Adicionar
         </button>
       </section>
