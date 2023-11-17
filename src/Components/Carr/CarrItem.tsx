@@ -5,15 +5,15 @@ import FormatCurrency from "../../Context/utils/FormatCurrency";
 
 const StyledCarrItem = styled.section`
   .carr-item-content {
-    padding: 0 30px 0 10px;
+    padding: 0 30px 0 0;
     position: relative;
   }
   .carr-item {
     display: flex;
     align-items: flex-start;
-    border-bottom: 1px solid #ddd;
     padding-bottom: 20px;
     margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
   }
 
   .carr-item-image {

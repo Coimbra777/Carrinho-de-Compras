@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import AppContext from "../../Context/AppContext";
 import CarrItem from "./CarrItem";
+import FormatCurrency from "../../Context/utils/FormatCurrency";
 
 const StyledCarr = styled.section`
   .carr {
@@ -20,6 +21,12 @@ const StyledCarr = styled.section`
     flex-grow: 1;
     overflow: auto;
   }
+  .carr-resume {
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 35px 0 15px;
+    border-top: 1px solid #ddd;
+  }
 `;
 
 const Carr: React.FC = () => {
@@ -29,6 +36,10 @@ const Carr: React.FC = () => {
   }
   const { carrItems } = context;
 
+  const totalPrice = carrItems.reduce((acc, item) => {
+    return item.price + acc;
+  }, 0);
+
   return (
     <StyledCarr>
       <section className="carr">
@@ -37,7 +48,9 @@ const Carr: React.FC = () => {
             <CarrItem key={carrItem.id} data={carrItem} />
           ))}
         </div>
-        <div className="carr-resume">Resumo do carrinho</div>
+        <div className="carr-resume">
+          {FormatCurrency({ value: totalPrice, currency: "BRL" })}
+        </div>
       </section>
       ;
     </StyledCarr>
