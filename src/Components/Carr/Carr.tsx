@@ -5,6 +5,8 @@ import CarrItem from "./CarrItem";
 
 const StyledCarr = styled.section`
   .carr {
+    display: flex;
+    flex-direction: column;
     width: 100%;
     max-width: 330px;
     background-color: white;
@@ -15,6 +17,8 @@ const StyledCarr = styled.section`
     padding: 130px 20px;
   }
   .carr-itens {
+    flex-grow: 1;
+    overflow: auto;
   }
 `;
 

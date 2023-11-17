@@ -5,7 +5,7 @@ import FormatCurrency from "../../Context/utils/FormatCurrency";
 
 const StyledCarrItem = styled.section`
   .carr-item-content {
-    padding: 0 35px 0 10px;
+    padding: 0 30px 0 10px;
     position: relative;
   }
   .carr-item {
@@ -18,7 +18,6 @@ const StyledCarrItem = styled.section`
 
   .carr-item-image {
     width: 64px;
-    height: auto;
     margin-right: 30px;
   }
   .carr-item-title {
@@ -28,9 +27,9 @@ const StyledCarrItem = styled.section`
     margin-bottom: 8px;
   }
   .carr-item-price {
-    font-weight: 500;
+    font-weight: bold;
     margin-bottom: 8px;
-    font-size: 25px;
+    font-size: 20px;
   }
   .carr-button-remove {
     position: absolute;
@@ -66,7 +65,7 @@ const CarrItem: React.FC<CarrProps> = ({ data }) => {
         />
         <div className="carr-item-content">
           <h3 className="carr-item-title">{title}</h3>
-          <h2 className="card-price">
+          <h2 className="carr-item-price">
             {FormatCurrency({ value: price, currency: "BRL" })}
           </h2>
 
