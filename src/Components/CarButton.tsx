@@ -11,6 +11,7 @@ const StyledCarButton = styled.div`
     align-items: center;
     padding: 5px;
     cursor: pointer;
+    background: none;
     border: none;
   }
 `;

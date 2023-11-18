@@ -28,6 +28,13 @@ const StyledSearchBar = styled.div`
     padding: 10px;
     cursor: pointer;
   }
+
+  @media (max-width: 768px) {
+    .search-bar {
+      width: 15rem;
+      height: 2.5rem;
+    }
+  }
 `;
 
 const SearchBar: React.FC = () => {

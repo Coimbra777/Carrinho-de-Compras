@@ -12,6 +12,12 @@ const StyledProducts = styled.section`
     gap: 30px;
     padding: 150px 0;
   }
+  @media (max-width: 768px) {
+    .products {
+      display: grid;
+      padding: 120px 20px;
+    }
+  }
 `;
 
 const Products: React.FC = () => {

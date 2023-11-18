@@ -17,6 +17,13 @@ const StyledHeader = styled.header`
     justify-content: space-between;
     padding: 2rem 4rem;
   }
+
+  @media (max-width: 768px) {
+    .header > div {
+      align-items: center;
+      padding: 1.5rem;
+    }
+  }
 `;
 
 const Header: React.FC = () => {
