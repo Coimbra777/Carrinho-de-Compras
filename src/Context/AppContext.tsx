@@ -11,11 +11,17 @@ export interface Carr {
   price: number;
   thumbnail?: string;
 }
+
+export interface Visible {
+  visible: boolean;
+}
 export interface AppContextProps {
   products: Product[];
   setProducts: Dispatch<SetStateAction<Product[]>>;
   carrItems: Carr[];
   setCarrItems: Dispatch<SetStateAction<Carr[]>>;
+  carrVisible?: Visible;
+  setCarrVisible: Dispatch<SetStateAction<Visible | undefined>>;
 }
 
 const AppContext = createContext<AppContextProps | undefined>(undefined);

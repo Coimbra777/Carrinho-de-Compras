@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { MdRemoveShoppingCart } from "react-icons/md";
-import FormatCurrency from "../../Context/utils/FormatCurrency";
+import FormatCurrency from "../../utils/FormatCurrency";
+import AppContext from "../../Context/AppContext";
 
 const StyledCarrItem = styled.section`
   .carr-item-content {
@@ -15,7 +16,6 @@ const StyledCarrItem = styled.section`
     margin-bottom: 20px;
     border-bottom: 1px solid #ddd;
   }
-
   .carr-item-image {
     width: 64px;
     margin-right: 30px;
@@ -42,7 +42,6 @@ const StyledCarrItem = styled.section`
     cursor: pointer;
   }
 `;
-
 interface CarrProps {
   data: {
     id: number;
@@ -53,7 +52,17 @@ interface CarrProps {
 }
 
 const CarrItem: React.FC<CarrProps> = ({ data }) => {
-  const { title, price, thumbnail } = data;
+  const context = useContext(AppContext);
+  if (!context) {
+    throw new Error("Context not found");
+  }
+  const { carrItems, setCarrItems } = context;
+  const { id, title, price, thumbnail } = data;
+
+  const handleRemoveButton = () => {
+    const updatedItems = carrItems.filter((item) => item.id !== id);
+    setCarrItems(updatedItems);
+  };
 
   return (
     <StyledCarrItem>
@@ -68,8 +77,11 @@ const CarrItem: React.FC<CarrProps> = ({ data }) => {
           <h2 className="carr-item-price">
             {FormatCurrency({ value: price, currency: "BRL" })}
           </h2>
-
-          <button type="button" className="carr-button-remove">
+          <button
+            type="button"
+            className="carr-button-remove"
+            onClick={handleRemoveButton}
+          >
             <MdRemoveShoppingCart />
           </button>
         </div>

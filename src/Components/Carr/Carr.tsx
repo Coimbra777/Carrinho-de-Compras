@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import AppContext from "../../Context/AppContext";
 import CarrItem from "./CarrItem";
-import FormatCurrency from "../../Context/utils/FormatCurrency";
+import FormatCurrency from "../../utils/FormatCurrency";
 
 const StyledCarr = styled.section`
   .carr {
@@ -16,6 +16,7 @@ const StyledCarr = styled.section`
     top: 0;
     right: 0;
     padding: 130px 20px;
+    transform: translate(110%, 0);
   }
   .carr-itens {
     flex-grow: 1;
@@ -27,6 +28,9 @@ const StyledCarr = styled.section`
     padding: 35px 0 15px;
     border-top: 1px solid #ddd;
   }
+  .carr-active {
+    transform: translate(0, 0);
+  }
 `;
 
 const Carr: React.FC = () => {
@@ -34,7 +38,7 @@ const Carr: React.FC = () => {
   if (!context) {
     throw new Error("Context not found");
   }
-  const { carrItems } = context;
+  const { carrItems, carrVisible } = context;
 
   const totalPrice = carrItems.reduce((acc, item) => {
     return item.price + acc;
@@ -42,17 +46,16 @@ const Carr: React.FC = () => {
 
   return (
     <StyledCarr>
-      <section className="carr">
+      <section className={`carr ${carrVisible ? "carr-active" : ""} `}>
         <div className="carr-itens">
-          {carrItems.map((carrItem) => (
-            <CarrItem key={carrItem.id} data={carrItem} />
+          {carrItems.map((carrItem, index) => (
+            <CarrItem key={index} data={carrItem} />
           ))}
         </div>
         <div className="carr-resume">
           {FormatCurrency({ value: totalPrice, currency: "BRL" })}
         </div>
       </section>
-      ;
     </StyledCarr>
   );
 };

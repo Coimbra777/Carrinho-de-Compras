@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import styled from "styled-components";
+import AppContext from "../Context/AppContext";
 
 const StyledCarButton = styled.div`
   .car-button {
@@ -15,19 +16,23 @@ const StyledCarButton = styled.div`
 `;
 
 const CarButton: React.FC = () => {
-  const [itensCar, setItensCar] = useState(0);
+  const context = useContext(AppContext);
+  if (!context) {
+    throw new Error("Context not found");
+  }
+  const { carrItems, carrVisible, setCarrVisible } = context;
 
-  const adicionarItem = () => {
-    setItensCar(itensCar + 1);
-  };
-  // const removerItem = () => {
-  //   setItensCar(itensCar - 1);
-  // };
   return (
     <StyledCarButton>
-      <button type="button" className="car-button" onClick={adicionarItem}>
+      <button
+        type="button"
+        className="car-button"
+        onClick={() => {
+          setCarrVisible(!carrVisible);
+        }}
+      >
         <AiOutlineShoppingCart />
-        <span>{itensCar}</span>
+        {carrItems?.length > 0 && <span>{carrItems.length}</span>}
       </button>
     </StyledCarButton>
   );

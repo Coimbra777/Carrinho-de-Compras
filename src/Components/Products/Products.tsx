@@ -25,22 +25,30 @@ const Products: React.FC = () => {
   const [loading, setLoading] = React.useState(true);
 
   useEffect(() => {
-    fetchProducts("iphone").then((response) => {
-      setProducts(() => response);
-      setLoading(false);
-    });
+    const fetchData = async () => {
+      try {
+        const response = await fetchProducts("iphone");
+        setProducts(response);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+        setLoading(false);
+      }
+    };
+
+    fetchData();
   }, [setProducts]);
 
-  return (
-    (loading && <Loading />) || (
-      <StyledProducts>
-        <section className="container products">
-          {products.map((product) => (
-            <ProductCard key={product.id} data={product} />
-          ))}
-        </section>
-      </StyledProducts>
-    )
+  return loading ? (
+    <Loading />
+  ) : (
+    <StyledProducts>
+      <section className="container products">
+        {products.map((product) => (
+          <ProductCard key={product.id} data={product} />
+        ))}
+      </section>
+    </StyledProducts>
   );
 };
 

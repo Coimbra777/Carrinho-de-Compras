@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 import AppContext, { Carr } from "../../Context/AppContext";
-import FormatCurrency from "../../Context/utils/FormatCurrency";
+import FormatCurrency from "../../utils/FormatCurrency";
 
 const StyledCard = styled.section`
   .product-card {
@@ -100,7 +100,6 @@ const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
             className="product-image"
           />
         )}
-
         <div className="card-info">
           <h2 className="card-title">{title}</h2>
           <h2 className="card-price">
