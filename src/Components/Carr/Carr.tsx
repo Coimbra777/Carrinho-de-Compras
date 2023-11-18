@@ -9,14 +9,15 @@ const StyledCarr = styled.section`
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 330px;
+    max-width: 350px;
     background-color: white;
     height: 100vh;
     position: fixed;
     top: 0;
     right: 0;
-    padding: 130px 20px;
+    padding: 130px 20px 20px;
     transform: translate(110%, 0);
+    transition: 1s;
   }
   .carr-itens {
     flex-grow: 1;
@@ -25,7 +26,7 @@ const StyledCarr = styled.section`
   .carr-resume {
     font-size: 1.5rem;
     font-weight: bold;
-    padding: 35px 0 15px;
+    padding: 10px 0 15px;
     border-top: 1px solid #ddd;
   }
   .carr-active {

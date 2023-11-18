@@ -9,9 +9,10 @@ const StyledCarButton = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 5px;
+    padding: 10px 8px;
     cursor: pointer;
-    background: none;
+    background-color: #0d468e;
+    border-radius: 50%;
     border: none;
   }
 `;
