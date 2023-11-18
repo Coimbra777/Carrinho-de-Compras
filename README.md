@@ -1,6 +1,14 @@
 # Carrinho de Compras em React
 
-Este projeto é um exemplo simples de um aplicativo de carrinho de compras desenvolvido com React. Ele permite aos usuários adicionar produtos ao carrinho, visualizar o carrinho e remover itens.
+### Este projeto é um exemplo simples de um aplicativo de carrinho de compras desenvolvido com React. Ele permite aos usuários adicionar produtos ao carrinho, visualizar o carrinho e remover itens. Este projeto tem como objetivo aumentar meus conehcimentos em React e TypeScript .
+
+Você pode acessar ele aqui:
+https://coimbra777.github.io/Carrinho-de-Compras/
+<br><br>
+
+![Captura de Tela (29)](https://github.com/Coimbra777/Carrinho-de-Compras/assets/103074944/96d3259e-a43f-41d2-af13-04f0eaf5050f)
+
+
 
 ## Tecnologias Utilizadas
 
