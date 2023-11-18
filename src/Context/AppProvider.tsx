@@ -1,5 +1,4 @@
 // AppProvider.tsx
-
 import React, { useState, ReactNode } from "react";
 import AppContext, {
   AppContextProps,

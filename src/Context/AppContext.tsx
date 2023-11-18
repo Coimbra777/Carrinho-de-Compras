@@ -1,4 +1,6 @@
+// AppContext.tsx
 import { createContext, Dispatch, SetStateAction } from "react";
+
 export interface Product {
   id: number;
   title: string;
@@ -15,6 +17,7 @@ export interface Carr {
 export interface Visible {
   visible: boolean;
 }
+
 export interface AppContextProps {
   products: Product[];
   setProducts: Dispatch<SetStateAction<Product[]>>;
