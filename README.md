@@ -58,4 +58,3 @@ Sinta-se à vontade para contribuir com melhorias, correções de bugs ou adicio
 ## Licença
 Este projeto está sob a licença MIT - veja o arquivo LICENSE.md para detalhes.
 
-Lembre-se de substituir `seu-usuario` pelo seu nome de usuário no GitHub e personalizar as seções conforme necessário para o seu projeto. Este é apenas um exemplo básico, e você pode expandi-lo conforme o seu projeto evolui.
